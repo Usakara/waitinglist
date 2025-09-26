@@ -73,22 +73,23 @@
 
     // MakeのWebhookからデータ取得
     async function fetchDataAndRender() {
-    　　　　try {
-        　　　　const response = await fetch(apiUrl);
-       　　　　 let data = await response.json();
-        　　　　console.log("取得データ:", data);
-　　　　
-        　　　　// "data"配列を展開
-        　　　　if (data.data) {
-            　　　　data = data.data;
-       　　　　 }
-　　　　
-        　　　　render(data);
-    　　　　} catch (error) {
-        　　　　console.error("データ取得エラー:", error);
-        　　　　waitingListElem.innerHTML = '<p style="text-align:center;color:red;">取得に失敗しました</p>';
- 　　　　   }
-　　　　}
+        try {
+            const response = await fetch(apiUrl);
+            let data = await response.json();
+            console.log("取得データ:", data);
+    
+            // "data"配列を展開
+            if (data.data) {
+                data = data.data;
+            }
+    
+            render(data);
+        } catch (error) {
+            console.error("データ取得エラー:", error);
+            waitingListElem.innerHTML = '<p style="text-align:center;color:red;">取得に失敗しました</p>';
+        }
+    }
+
 
 
     // 初回表示
